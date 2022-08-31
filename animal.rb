@@ -15,8 +15,6 @@ end
 # Modify the Animal class
 
 class Animal
-  attr_accessor :owner
-
   def initialize(type, number_of_legs, name = unknown)
     @id = Random.rand(1..1000)
     @name = name
@@ -56,6 +54,12 @@ class Animal
 
   def likes_food?(food)
     @liked_food.is_liked?(food)
+  end
+
+  attr_accessor :owner
+  def owner=(owner)
+    @owner = owner
+    owner.animals.push(self) unless owner.animals.include?(self)
   end
 
 end
