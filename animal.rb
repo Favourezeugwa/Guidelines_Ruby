@@ -15,6 +15,8 @@ end
 # Modify the Animal class
 
 class Animal
+  attr_accessor :owner
+
   def initialize(type, number_of_legs, name = unknown)
     @id = Random.rand(1..1000)
     @name = name
@@ -57,3 +59,34 @@ class Animal
   end
 
 end
+
+
+
+# TRY IT - CONSOLE(Animals belongs to Owner relationship)
+# To make this relationship possible we only need to add an attr_accessor for @owners in Animal (animal.rb).
+
+require "./animal.rb"
+require "./dog.rb"
+require "./spider.rb"
+require "./owner.rb"
+
+dog = Dog.new("black", "Rax")
+spider = Spider.new(85, "Bob")
+animal = Animal.new("lion", 4, "Some name")
+
+alex = Owner.new("Alex")
+alex.animals
+alex.add_animal(dog)
+alex.animals
+alex.add_animal(spider)
+alex.animals
+alex.add_animal(animal)
+
+alex.animals.last.owner.name
+
+animal.owner
+animal.owner = alex
+animal.owner
+animal.owner.name
+
+alex.animals.last.owner.name
