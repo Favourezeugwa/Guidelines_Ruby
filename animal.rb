@@ -1,26 +1,20 @@
 require "./remover.rb"
 require "./foods.rb"
 
-class Animal
-  def initialize(type, number_of_legs, name = unknown)
-    @id = Random.rand(1..1000)
-    @name = name
-    @number_of_legs = number_of_legs
-    @type = type
-  end
-end
-
-# declaring getters and setters
+# declaring getters, setters, both (attr)
 
 # Modify the Animal class
 
 class Animal
+  attr_reader :owner, :visits
+
   def initialize(type, number_of_legs, name = unknown)
     @id = Random.rand(1..1000)
     @name = name
     @number_of_legs = number_of_legs
     @type = type
     @liked_food = NoFood.new()
+    @visits = []
   end
 
   def id
@@ -56,7 +50,6 @@ class Animal
     @liked_food.is_liked?(food)
   end
 
-  attr_accessor :owner
   def owner=(owner)
     @owner = owner
     owner.animals.push(self) unless owner.animals.include?(self)
