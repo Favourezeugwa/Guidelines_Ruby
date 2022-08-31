@@ -15,7 +15,7 @@ end
 
 
 
-# TRY IT - CONSOLE
+# TRY IT - CONSOLE (Owner has many Animal)
 require "./animal.rb"
 require "./dog.rb"
 require "./spider.rb"
